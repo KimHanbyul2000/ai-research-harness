@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────────────────────
+# 3단 추적의 실물
+#
+#   1층 실험 작업공간  out/ · archive/     → 추적하지 않는다
+#   2층 스냅샷         bootstrap/          → 추적한다 (드라이버 사본만)
+#   3층 라이브러리     lib/ · tests/       → 추적한다 (승격 통과분만)
+#
+# 자세한 규칙: docs/승격기준.md
+# ─────────────────────────────────────────────────────────────
+
+# 1층 — 실험 작업공간. 전부 제외.
+# 폴더는 실험 시작·아카이브 시 코드가 만든다(mkdir exist_ok=True).
+out/
+archive/
+
+# 산출물 — 재생성 가능한 것은 추적하지 않는다.
+figures/
+results/
+output/
+*.png
+*.pdf
+*.npy
+*.pkl
+*.csv
+
+# 예외: 규칙 문서는 살린다.
+# 위 figures/ 가 폴더째 막으면 그 안의 README까지 커밋되지 않는다.
+!docs/figures/
+docs/figures/*
+!docs/figures/README.md
+
+# 2층 방어 — bootstrap/ 의 스크립트를 제자리가 아닌 곳에서
+# 실수로 실행했을 때 생기는 산출물.
+bootstrap/*/data/
+bootstrap/*/figures/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# 환경·개인 설정
+.env
+.claude/
+.vscode/
+.idea/
+
+# OS
+**/.DS_Store
+Thumbs.db
