@@ -178,7 +178,8 @@ git clone https://github.com/KimHanbyul2000/ai-research-harness
 │   ├── 승인게이트.md              게이트 4개 + 도구 쪽 장치
 │   ├── 오답노트.md                시각화 오류 패턴 10종 + 검출 4층
 │   ├── 분석폴더_규칙.md           3종 세트 · 탈락 사유 · 커버리지 감사 · 재현 assert
-│   └── 승격기준.md                git 3단 추적의 승격 관문 (보조)
+│   ├── 승격기준.md                git 3단 추적의 승격 관문 (보조)
+│   └── skill_list.md             위 규칙을 에이전트 스킬로 심는 법 (설계)
 ├── templates/                    빈 서식 (00 · 01 · run.py · 도구 설정 예시)
 ├── examples/                     채워진 예시 1건
 ├── demo/                         브라우저로 여는 데모 (뷰어 · 개념도 · 설계목표)
