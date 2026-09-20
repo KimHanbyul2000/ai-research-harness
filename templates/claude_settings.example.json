@@ -1,0 +1,39 @@
+{
+  "_설명": "승인 게이트의 도구 쪽 장치. .claude/settings.json 으로 복사해 쓴다. 규칙은 docs/승인게이트.md 참조.",
+
+  "permissions": {
+    "defaultMode": "acceptEdits",
+
+    "_allow": "매번 물으면 게이트가 소음이 된다. 되돌리기 싼 것은 통과시킨다.",
+    "allow": [
+      "Bash",
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Skill"
+    ],
+
+    "_ask": "되돌리기 비싼 것만. 이 목록이 길어지면 사람이 전부 승인하게 된다.",
+    "ask": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr merge:*)"
+    ],
+
+    "_deny": "확인을 물을 여지도 두지 않는 것.",
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(rm -rf /:*)",
+      "Bash(rm -rf ~:*)",
+      "Read(./.env)",
+      "Read(./**/.env)"
+    ]
+  }
+}

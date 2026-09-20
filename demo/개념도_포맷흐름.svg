@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  포맷 흐름과 승인 게이트 — 구조 개념도
+
+  이 파일은 `.svg`의 역할을 보여주는 예다(docs/포맷별_역할.md).
+    · 값을 담지 않는다 — 측정값이 들어가면 그건 결과 그림이고 .png 의 일이다
+    · 라벨·색·좌표가 전부 텍스트라 diff 가 읽힌다
+    · 범주 색(CSS 변수 cat-a / cat-b)을 여기 쓰지 않는다 — 단계는 범주가 아니다
+      (XML 주석 안에는 연속 하이픈을 쓸 수 없다 — 넣으면 파일 전체가 파싱되지 않아
+       화면이 백지가 된다. 오답노트 패턴 2.)
+      (오답노트 패턴 5). 강조는 중성 회색조와 굵기로만 준다.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400"
+     font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif"
+     role="img" aria-label="포맷 흐름과 승인 게이트 개념도">
+
+  <title>포맷 흐름과 승인 게이트</title>
+  <desc>.md 에서 .svg, .html 을 거쳐 .png 로 가는 단계와, 각 단계 사이의 사람 승인 지점.</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 z" fill="#8a8a8a"/>
+    </marker>
+    <style>
+      .box   { fill:#ffffff; stroke:#c9c9c9; stroke-width:1.5; }
+      .box-f { fill:#f4f4f2; stroke:#1a1a1a; stroke-width:2; }
+      .fmt   { font-size:19px; font-weight:700; fill:#1a1a1a; }
+      .stage { font-size:12px; fill:#7a7a7a; letter-spacing:.06em; }
+      .role  { font-size:13px; fill:#3a3a3a; }
+      .gate  { font-size:11.5px; font-weight:700; fill:#ffffff; }  /* 검은 원 안의 번호.
+                 CSS 가 presentation attribute 를 이기므로 색은 여기서만 정한다 */
+      .gtxt  { font-size:11.5px; fill:#6b6b6b; }
+      .flow  { stroke:#8a8a8a; stroke-width:1.6; fill:none; }
+      .cap   { font-size:12.5px; fill:#6b6b6b; }
+      .hdr   { font-size:15px; font-weight:700; fill:#1a1a1a; }
+      .rule  { stroke:#e0e0e0; stroke-width:1; }
+    </style>
+  </defs>
+
+  <rect width="960" height="400" fill="#ffffff"/>
+
+  <text x="32" y="38" class="hdr">포맷 흐름과 승인 게이트</text>
+  <text x="32" y="58" class="cap">단계마다 포맷이 정해져 있고, 사이마다 사람이 통과시킨다. 거꾸로 가지 않는다.</text>
+  <line x1="32" y1="74" x2="928" y2="74" class="rule"/>
+
+  <!-- ───────── 단계 박스 4개 ───────── -->
+  <!-- .md -->
+  <g transform="translate(32,108)">
+    <rect class="box" width="180" height="104" rx="6"/>
+    <text x="16" y="26" class="stage">설계 · 기록</text>
+    <text x="16" y="54" class="fmt">.md</text>
+    <text x="16" y="76" class="role">규칙 · 설계목표 · 해석</text>
+    <text x="16" y="93" class="role">용어 장부 대조 후 확정</text>
+  </g>
+
+  <!-- .svg -->
+  <g transform="translate(266,108)">
+    <rect class="box" width="180" height="104" rx="6"/>
+    <text x="16" y="26" class="stage">구조 합의</text>
+    <text x="16" y="54" class="fmt">.svg</text>
+    <text x="16" y="76" class="role">개념 · 관계 · 배선</text>
+    <text x="16" y="93" class="role">값을 담지 않는다</text>
+  </g>
+
+  <!-- .html -->
+  <g transform="translate(500,108)">
+    <rect class="box" width="180" height="104" rx="6"/>
+    <text x="16" y="26" class="stage">검증</text>
+    <text x="16" y="54" class="fmt">.html</text>
+    <text x="16" y="76" class="role">동적 탐색 · 자기완결</text>
+    <text x="16" y="93" class="role">아직 결론이 아니다</text>
+  </g>
+
+  <!-- .png -->
+  <g transform="translate(734,108)">
+    <rect class="box-f" width="180" height="104" rx="6"/>
+    <text x="16" y="26" class="stage">확정</text>
+    <text x="16" y="54" class="fmt">.png</text>
+    <text x="16" y="76" class="role">논문 · 보고서에 그대로</text>
+    <text x="16" y="93" class="role">되돌리기 비싸다</text>
+  </g>
+
+  <!-- ───────── 흐름 화살표 ───────── -->
+  <path class="flow" d="M212,160 H266" marker-end="url(#arw)"/>
+  <path class="flow" d="M446,160 H500" marker-end="url(#arw)"/>
+  <path class="flow" d="M680,160 H734" marker-end="url(#arw)"/>
+
+  <!-- ───────── 게이트 ───────── -->
+  <g transform="translate(0,232)">
+    <!-- 게이트 1 -->
+    <line x1="239" y1="-60" x2="239" y2="6" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <circle cx="239" cy="16" r="12" fill="#1a1a1a"/>
+    <text x="239" y="20" class="gate" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="239" y="46" class="gtxt" text-anchor="middle">설계목표가</text>
+    <text x="239" y="61" class="gtxt" text-anchor="middle">코드보다 먼저</text>
+
+    <!-- 게이트 2 -->
+    <line x1="473" y1="-60" x2="473" y2="6" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <circle cx="473" cy="16" r="12" fill="#1a1a1a"/>
+    <text x="473" y="20" class="gate" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="473" y="46" class="gtxt" text-anchor="middle">무거운 실행은</text>
+    <text x="473" y="61" class="gtxt" text-anchor="middle">점검 먼저 보고</text>
+
+    <!-- 게이트 3 -->
+    <line x1="707" y1="-60" x2="707" y2="6" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <circle cx="707" cy="16" r="12" fill="#1a1a1a"/>
+    <text x="707" y="20" class="gate" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="707" y="46" class="gtxt" text-anchor="middle">사람이 그림을</text>
+    <text x="707" y="61" class="gtxt" text-anchor="middle">직접 보고 승인</text>
+
+    <!-- 게이트 4 -->
+    <line x1="908" y1="-18" x2="908" y2="6" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <circle cx="908" cy="16" r="12" fill="#1a1a1a"/>
+    <text x="908" y="20" class="gate" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="908" y="46" class="gtxt" text-anchor="end">승격 관문 둘</text>
+    <text x="908" y="61" class="gtxt" text-anchor="end">→ git 추적</text>
+  </g>
+
+  <!-- ───────── 아래 설명 ───────── -->
+  <line x1="32" y1="330" x2="928" y2="330" class="rule"/>
+  <text x="32" y="354" class="cap">
+    포맷은 결과가 아니라 지시다 — "이건 .html로 낸다"가 "동적으로 확인할 단계이고 아직 결론이 아니다"까지 함께 전달한다.
+  </text>
+  <text x="32" y="376" class="cap">
+    검토 예산은 되돌리기 비싼 곳에 몰아준다. 앞의 셋은 마음껏 만들고 버린다. 승인 대상은 .png 뿐이다.
+  </text>
+</svg>
