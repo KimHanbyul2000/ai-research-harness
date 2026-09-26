@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Twin Independent Loop: 구조 개념도
+  Twin Independent Loop: 구조 개념도 (v2)
 
-  신청서 첨부 이미지(AI 생성 PNG)를 같은 구도로 다시 그린 것이다.
+  신청서 첨부 이미지(AI 생성 PNG)와 같은 구도를 SVG로 다시 그린 것이다.
     · 구조만 담는다. 값이 없으므로 .png 가 아니라 .svg 다 (docs/포맷별_역할.md)
     · 두 루프는 서로 다른 범주라 색 두 개를 쓴다. 나머지는 회색조
+    · 루프 안의 글자는 원 중심 x 와 같은 x 에 text-anchor middle 로 둔다 (정렬 기준 하나)
     · 글자색은 CSS 클래스에서만 정한다. 클래스의 fill 이 presentation attribute 를 이긴다
     · 이 주석 안에 하이픈을 두 개 연달아 쓰지 않는다 (오답노트 패턴 2)
+  이전 판은 이 파일의 git 이력에 있다 (git log -p 에 이 경로를 준다)
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 844" width="1400" height="844"
      font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif"
      role="img" aria-label="Twin Independent Loop 구조 개념도">
 
   <title>Twin Independent Loop — Human-in-the-Loop AI 연구 협업 체계</title>
-  <desc>문서 에이전트 루프와 코드 에이전트 루프가 서로 다른 디렉토리에서 돌고, 가운데의 연구자가 방향을 정하고 승인한다.</desc>
+  <desc>문서 에이전트 루프와 코드 에이전트 루프가 서로 다른 디렉토리에서 돌고, 두 루프는 설계목표와 결과해석 파일로만 오간다. 가운데의 연구자가 네 개의 승인 게이트에서 판단한다.</desc>
 
   <defs>
     <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5"
@@ -21,97 +23,189 @@
       <path d="M0,1 L9,5 L0,9 z" fill="#6b6b6b"/>
     </marker>
     <style>
-      .ttl   { font-size:30px; font-weight:800; fill:#1a1a1a; }
-      .sub   { font-size:15px; fill:#6b6b6b; }
-      .ring1 { fill:none; stroke:#4a5566; stroke-width:40; }
-      .ring2 { fill:none; stroke:#d9735f; stroke-width:40; }
-      .core  { fill:#ffffff; stroke:#b9b9b9; stroke-width:14; }
-      .kick  { font-size:13px; font-weight:700; letter-spacing:.12em; fill:#8a8a8a; }
-      .name  { font-size:25px; font-weight:800; fill:#1a1a1a; }
+      .ttl   { font-size:34px; font-weight:800; fill:#1a1a1a; }
+      .sub   { font-size:16px; fill:#6b6b6b; }
+      .ring1 { fill:none; stroke:#4a5566; stroke-width:34; }
+      .ring2 { fill:none; stroke:#d9735f; stroke-width:34; }
+      .core  { fill:#ffffff; stroke:#b9b9b9; stroke-width:12; }
+      .kick  { font-size:12.5px; font-weight:700; letter-spacing:.12em; fill:#8a8a8a; }
+      .name  { font-size:27px; font-weight:800; fill:#1a1a1a; }
       .role  { font-size:14.5px; fill:#4a4a4a; }
       .tag1  { fill:#eef0f3; stroke:#4a5566; stroke-width:1.2; }
       .tag2  { fill:#fbefec; stroke:#d9735f; stroke-width:1.2; }
       .tagt  { font-size:13px; font-weight:700; fill:#1a1a1a; }
-      .who   { font-size:28px; font-weight:800; fill:#1a1a1a; }
+      .b1    { fill:#ffffff; stroke:#4a5566; stroke-width:3; }
+      .b2    { fill:#ffffff; stroke:#d9735f; stroke-width:3; }
+      .bn    { font-size:14px; font-weight:800; fill:#1a1a1a; }
+      .sh    { font-size:15.5px; font-weight:800; fill:#1a1a1a; }
+      .st    { font-size:13px; fill:#5a5a5a; }
+      .sg    { font-size:13px; font-weight:700; fill:#1a1a1a; }
+      .who   { font-size:30px; font-weight:800; fill:#1a1a1a; }
       .whos  { font-size:14px; fill:#4a4a4a; }
-      .gate  { font-size:13px; font-weight:700; fill:#ffffff; }
       .gdot  { fill:#1a1a1a; }
+      .gate  { font-size:13px; font-weight:700; fill:#ffffff; }
       .flow  { stroke:#6b6b6b; stroke-width:1.6; fill:none; }
-      .flowt { font-size:13.5px; fill:#4a4a4a; }
-      .hd    { font-size:17px; font-weight:800; fill:#1a1a1a; }
-      .tx    { font-size:13.5px; fill:#5a5a5a; }
+      .file  { font-size:14.5px; font-weight:800; fill:#1a1a1a; font-family:ui-monospace, Menlo, Consolas, monospace; }
+      .flowt { font-size:13px; fill:#5a5a5a; }
+      .panel { fill:#f6f6f4; }
+      .ph    { font-size:15px; font-weight:800; fill:#1a1a1a; }
+      .chip  { fill:#ffffff; stroke:#1a1a1a; stroke-width:1.5; }
+      .chipf { fill:#1a1a1a; }
+      .ct    { font-size:15px; font-weight:800; fill:#1a1a1a; font-family:ui-monospace, Menlo, Consolas, monospace; }
+      .ctf   { font-size:15px; font-weight:800; fill:#ffffff; font-family:ui-monospace, Menlo, Consolas, monospace; }
+      .cs    { font-size:12px; fill:#6b6b6b; }
+      .nb    { fill:#ffffff; stroke:#c9c9c9; stroke-width:1.2; }
+      .nt    { font-size:13px; font-weight:700; fill:#1a1a1a; }
+      .ns    { font-size:12px; fill:#6b6b6b; }
       .rule  { stroke:#e0e0e0; stroke-width:1; }
-      .cap   { font-size:13.5px; fill:#6b6b6b; }
+      .cap   { font-size:13px; fill:#8a8a8a; }
     </style>
   </defs>
 
-  <rect width="1200" height="700" fill="#ffffff"/>
+  <rect width="1400" height="844" fill="#ffffff"/>
 
-  <text x="600" y="52" class="ttl" text-anchor="middle">Twin Independent Loop</text>
-  <text x="600" y="80" class="sub" text-anchor="middle">Human-in-the-Loop AI 연구 협업 체계 · 두 루프는 서로 다른 디렉토리에서 돌고, 판단은 가운데에 남는다</text>
+  <text x="700" y="54" class="ttl" text-anchor="middle">Twin Independent Loop</text>
+  <text x="700" y="84" class="sub" text-anchor="middle">Human-in-the-Loop AI 연구 협업 체계 · 두 에이전트는 서로 다른 디렉토리에서 돌고, 파일로만 오가며, 판단은 가운데에 남는다</text>
 
-  <!-- ───────── 두 루프 ───────── -->
-  <circle cx="330" cy="380" r="180" class="ring1"/>
-  <circle cx="870" cy="380" r="180" class="ring2"/>
+  <g transform="translate(0,-56)">
 
-  <!-- Loop 1 안쪽 -->
-  <g transform="translate(318,318)">
-    <text x="0" y="0" class="kick" text-anchor="middle">LOOP 1</text>
-    <text x="0" y="34" class="name" text-anchor="middle">문서 에이전트</text>
-    <text x="0" y="60" class="role" text-anchor="middle">연구 목표 · 논문 · 용어 · 해석</text>
-    <rect x="-88" y="82" width="84" height="28" rx="14" class="tag1"/>
-    <text x="-46" y="101" class="tagt" text-anchor="middle">용어 장부</text>
-    <rect x="4" y="82" width="84" height="28" rx="14" class="tag1"/>
-    <text x="46" y="101" class="tagt" text-anchor="middle">.md</text>
-  </g>
+  <!-- ═════════ 두 루프 (중심: 400,420 / 1000,420, 반지름 190) ═════════ -->
+  <circle cx="400"  cy="420" r="190" class="ring1"/>
+  <circle cx="1000" cy="420" r="190" class="ring2"/>
 
-  <!-- Loop 2 안쪽 -->
-  <g transform="translate(882,318)">
-    <text x="0" y="0" class="kick" text-anchor="middle">LOOP 2</text>
-    <text x="0" y="34" class="name" text-anchor="middle">코드 에이전트</text>
-    <text x="0" y="60" class="role" text-anchor="middle">코드 · 실행 · 데이터 분석 · 시각화</text>
-    <rect x="-104" y="82" width="100" height="28" rx="14" class="tag2"/>
-    <text x="-54" y="101" class="tagt" text-anchor="middle">포맷별 역할</text>
-    <rect x="4" y="82" width="100" height="28" rx="14" class="tag2"/>
-    <text x="54" y="101" class="tagt" text-anchor="middle">오답노트</text>
-  </g>
+  <!-- Loop 1 안쪽: 전부 x=400 기준 -->
+  <text x="400" y="352" class="kick" text-anchor="middle">LOOP 1 · 디렉토리 A</text>
+  <text x="400" y="388" class="name" text-anchor="middle">문서 에이전트</text>
+  <text x="400" y="414" class="role" text-anchor="middle">연구 전체의 맥락을 쥔다</text>
+  <rect x="310" y="436" width="100" height="28" rx="14" class="tag1"/>
+  <text x="360" y="455" class="tagt" text-anchor="middle">GLOSSARY</text>
+  <rect x="418" y="436" width="72" height="28" rx="14" class="tag1"/>
+  <text x="454" y="455" class="tagt" text-anchor="middle">.md</text>
 
-  <!-- ───────── 가운데: 연구자 ───────── -->
-  <circle cx="600" cy="380" r="118" class="core"/>
-  <text x="600" y="342" class="who" text-anchor="middle">연구자</text>
-  <text x="600" y="370" class="whos" text-anchor="middle">무엇을 · 왜 · 승인</text>
-  <text x="600" y="391" class="whos" text-anchor="middle">최종 결정권은 넘기지 않는다</text>
-  <g transform="translate(600,428)">
+  <!-- Loop 2 안쪽: 전부 x=1000 기준 -->
+  <text x="1000" y="352" class="kick" text-anchor="middle">LOOP 2 · 디렉토리 B</text>
+  <text x="1000" y="388" class="name" text-anchor="middle">코드 에이전트</text>
+  <text x="1000" y="414" class="role" text-anchor="middle">그 연구의 맥락만 받는다</text>
+  <rect x="906" y="436" width="84" height="28" rx="14" class="tag2"/>
+  <text x="948" y="455" class="tagt" text-anchor="middle">run.py</text>
+  <rect x="998" y="436" width="96" height="28" rx="14" class="tag2"/>
+  <text x="1046" y="455" class="tagt" text-anchor="middle">.html .png</text>
+
+  <!-- ─── Loop 1 바깥 단계 (왼쪽, 위에서 아래로) ─── -->
+  <!-- 각도 225° 195° 165° 135° 의 링 위 점 -->
+  <circle cx="266" cy="286" r="15" class="b1"/><text x="266" y="291" class="bn" text-anchor="middle">1</text>
+  <text x="238" y="262" class="sh" text-anchor="end">연구 목적 정의</text>
+  <text x="238" y="281" class="st" text-anchor="end">논문 · 배경에서 목적과 근거를 정리</text>
+
+  <circle cx="216" cy="371" r="15" class="b1"/><text x="216" y="376" class="bn" text-anchor="middle">2</text>
+  <text x="188" y="366" class="sh" text-anchor="end">1차 출처 검증</text>
+  <text x="188" y="385" class="st" text-anchor="end">원문과 대조해 확인된 것만</text>
+
+  <circle cx="216" cy="469" r="15" class="b1"/><text x="216" y="474" class="bn" text-anchor="middle">3</text>
+  <text x="188" y="464" class="sh" text-anchor="end">용어 장부 대조</text>
+  <text x="188" y="483" class="st" text-anchor="end">장부에 없는 말은 사람에게</text>
+
+  <circle cx="266" cy="554" r="15" class="b1"/><text x="266" y="559" class="bn" text-anchor="middle">4</text>
+  <text x="238" y="574" class="sh" text-anchor="end">해석 기록</text>
+  <text x="238" y="593" class="st" text-anchor="end">돌아온 결과를 문서로 확정</text>
+
+  <!-- ─── Loop 2 바깥 단계 (오른쪽, 위에서 아래로) ─── -->
+  <!-- 각도 315° 345° 15° 45° 의 링 위 점 -->
+  <circle cx="1134" cy="286" r="15" class="b2"/><text x="1134" y="291" class="bn" text-anchor="middle">1</text>
+  <text x="1162" y="262" class="sh">설계목표 읽기</text>
+  <text x="1162" y="281" class="sg">게이트 1 <tspan class="st">· 없으면 코드 안 만듦</tspan></text>
+
+  <circle cx="1184" cy="371" r="15" class="b2"/><text x="1184" y="376" class="bn" text-anchor="middle">2</text>
+  <text x="1212" y="366" class="sh">격리 실행</text>
+  <text x="1212" y="385" class="sg">게이트 2 <tspan class="st">· 점검 먼저 보고</tspan></text>
+
+  <circle cx="1184" cy="469" r="15" class="b2"/><text x="1184" y="474" class="bn" text-anchor="middle">3</text>
+  <text x="1212" y="464" class="sh">.html 동적 탐색</text>
+  <text x="1212" y="483" class="st">아직 결론이 아니다</text>
+
+  <circle cx="1134" cy="554" r="15" class="b2"/><text x="1134" y="559" class="bn" text-anchor="middle">4</text>
+  <text x="1162" y="574" class="sh">.png 확정</text>
+  <text x="1162" y="593" class="sg">게이트 3 <tspan class="st">· 사람이 그림을 보고 승인</tspan></text>
+
+  <!-- ═════════ 가운데: 연구자 ═════════ -->
+  <circle cx="700" cy="420" r="112" class="core"/>
+  <text x="700" y="384" class="who" text-anchor="middle">연구자</text>
+  <text x="700" y="411" class="whos" text-anchor="middle">무엇을 · 왜 · 승인</text>
+  <text x="700" y="431" class="whos" text-anchor="middle">최종 결정권은 넘기지 않는다</text>
+  <g transform="translate(700,462)">
     <circle cx="-45" cy="0" r="12" class="gdot"/><text x="-45" y="5" class="gate" text-anchor="middle">1</text>
     <circle cx="-15" cy="0" r="12" class="gdot"/><text x="-15" y="5" class="gate" text-anchor="middle">2</text>
     <circle cx="15"  cy="0" r="12" class="gdot"/><text x="15"  y="5" class="gate" text-anchor="middle">3</text>
     <circle cx="45"  cy="0" r="12" class="gdot"/><text x="45"  y="5" class="gate" text-anchor="middle">4</text>
   </g>
-  <text x="600" y="462" class="whos" text-anchor="middle">승인 게이트</text>
+  <text x="700" y="496" class="whos" text-anchor="middle">승인 게이트</text>
 
-  <!-- ───────── 루프 사이의 흐름 ───────── -->
-  <path class="flow" d="M490,236 H710" marker-end="url(#arw)"/>
-  <text x="600" y="224" class="flowt" text-anchor="middle">그 연구에 필요한 맥락만 넘긴다</text>
-  <path class="flow" d="M710,526 H490" marker-end="url(#arw)"/>
-  <text x="600" y="550" class="flowt" text-anchor="middle">결과와 해석을 문서로 회수한다</text>
+  <!-- ═════════ 루프 사이: 파일로만 오간다 ═════════ -->
+  <path class="flow" d="M590,262 H810" marker-end="url(#arw)"/>
+  <text x="700" y="228" class="file" text-anchor="middle">00_설계목표.md</text>
+  <text x="700" y="250" class="flowt" text-anchor="middle">그 연구에 필요한 맥락만 넘긴다</text>
 
-  <!-- ───────── 네 모서리 설명 ───────── -->
-  <text x="40" y="128" class="hd">연구 목적 정의</text>
-  <text x="40" y="150" class="tx">논문과 배경에서 목적과 근거를 정리한다.</text>
-  <text x="40" y="169" class="tx">설계목표가 코드보다 먼저 존재한다.</text>
+  <path class="flow" d="M810,578 H590" marker-end="url(#arw)"/>
+  <text x="700" y="602" class="file" text-anchor="middle">01_결과해석.md</text>
+  <text x="700" y="622" class="flowt" text-anchor="middle">탈락 사유 · 커버리지 · 재현 검산까지</text>
 
-  <text x="40" y="606" class="hd">1차 출처로 근거 검증</text>
-  <text x="40" y="628" class="tx">원문과 대조해 확인된 것만 쌓는다.</text>
-  <text x="40" y="647" class="tx">용어는 장부와 대조한 뒤 확정한다.</text>
+  <!-- 게이트 4 -->
+  <text x="1000" y="650" class="sg" text-anchor="middle">게이트 4 <tspan class="st">· 승격 관문 둘을 넘은 코드만 lib/ 로</tspan></text>
 
-  <text x="1160" y="128" class="hd" text-anchor="end">분석 폴더 단위로 격리 실행</text>
-  <text x="1160" y="150" class="tx" text-anchor="end">분석 하나 = 폴더 하나.</text>
-  <text x="1160" y="169" class="tx" text-anchor="end">설계목표 · run.py · 결과해석을 함께 둔다.</text>
+  <!-- ═════════ 아래 띠 ═════════ -->
+  <line x1="40" y1="676" x2="1360" y2="676" class="rule"/>
 
-  <text x="1160" y="606" class="hd" text-anchor="end">시각화 검증과 오답노트</text>
-  <text x="1160" y="628" class="tx" text-anchor="end">.html 로 탐색하고, 승인된 것만 .png 로 확정한다.</text>
-  <text x="1160" y="647" class="tx" text-anchor="end">반복된 오류는 규칙 한 줄로 쌓는다.</text>
+  <!-- 왼쪽: 포맷 흐름 -->
+  <rect x="40" y="696" width="640" height="156" rx="10" class="panel"/>
+  <text x="64" y="728" class="ph">포맷이 곧 지시다</text>
+  <text x="656" y="728" class="cs" text-anchor="end">순서대로 간다 · 거꾸로 가지 않는다</text>
 
-  <line x1="40" y1="672" x2="1160" y2="672" class="rule"/>
-  <text x="600" y="693" class="cap" text-anchor="middle">구조만 담은 개념도다. 값은 담지 않는다.</text>
+  <rect x="64"  y="748" width="112" height="44" rx="6" class="chip"/>
+  <text x="120" y="776" class="ct" text-anchor="middle">.md</text>
+  <rect x="222" y="748" width="112" height="44" rx="6" class="chip"/>
+  <text x="278" y="776" class="ct" text-anchor="middle">.svg</text>
+  <rect x="380" y="748" width="112" height="44" rx="6" class="chip"/>
+  <text x="436" y="776" class="ct" text-anchor="middle">.html</text>
+  <rect x="538" y="748" width="118" height="44" rx="6" class="chipf"/>
+  <text x="597" y="776" class="ctf" text-anchor="middle">.png</text>
+
+  <path class="flow" d="M178,770 H218" marker-end="url(#arw)"/>
+  <path class="flow" d="M336,770 H376" marker-end="url(#arw)"/>
+  <path class="flow" d="M494,770 H534" marker-end="url(#arw)"/>
+
+  <text x="120" y="816" class="cs" text-anchor="middle">설명 · 설계 · 해석</text>
+  <text x="278" y="816" class="cs" text-anchor="middle">구조 · 값 없음</text>
+  <text x="436" y="816" class="cs" text-anchor="middle">탐색 · 결론 아님</text>
+  <text x="597" y="816" class="cs" text-anchor="middle">확정 · 승인 대상</text>
+  <text x="64" y="840" class="cs">"이건 .html 로 낸다"는 한마디가 "아직 결론이 아니다"까지 전달한다.</text>
+
+  <!-- 오른쪽: 오답노트 고리 -->
+  <rect x="720" y="696" width="640" height="156" rx="10" class="panel"/>
+  <text x="744" y="728" class="ph">오류 하나당 규칙 한 줄</text>
+  <text x="1336" y="728" class="cs" text-anchor="end">오답노트 · 규칙이 .md 에 있어 다음 세션에 자동 적용</text>
+
+  <rect x="744"  y="748" width="130" height="58" rx="8" class="nb"/>
+  <text x="809" y="772" class="nt" text-anchor="middle">오류 발견</text>
+  <text x="809" y="792" class="ns" text-anchor="middle">그림이 조용히 틀림</text>
+
+  <rect x="894"  y="748" width="130" height="58" rx="8" class="nb"/>
+  <text x="959" y="772" class="nt" text-anchor="middle">왜 안 걸렸나</text>
+  <text x="959" y="792" class="ns" text-anchor="middle">통과한 검사를 적는다</text>
+
+  <rect x="1044" y="748" width="130" height="58" rx="8" class="nb"/>
+  <text x="1109" y="772" class="nt" text-anchor="middle">규칙 한 줄</text>
+  <text x="1109" y="792" class="ns" text-anchor="middle">날짜 · 실제 사고와 함께</text>
+
+  <rect x="1194" y="748" width="142" height="58" rx="8" class="nb"/>
+  <text x="1265" y="772" class="nt" text-anchor="middle">검출을 아래 층으로</text>
+  <text x="1265" y="792" class="ns" text-anchor="middle">상수 · 분리 · 테스트</text>
+
+  <path class="flow" d="M876,777 H890" marker-end="url(#arw)"/>
+  <path class="flow" d="M1026,777 H1040" marker-end="url(#arw)"/>
+  <path class="flow" d="M1176,777 H1190" marker-end="url(#arw)"/>
+  <path class="flow" d="M1265,808 V830 H809 V812" marker-end="url(#arw)"/>
+  <text x="1037" y="846" class="cs" text-anchor="middle">다음 그림에서는 같은 오류가 사람 앞에 오기 전에 걸린다</text>
+
+  <text x="700" y="885" class="cap" text-anchor="middle">구조만 담은 개념도다. 값은 담지 않는다.</text>
+  </g>
 </svg>
