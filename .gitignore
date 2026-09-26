@@ -19,6 +19,8 @@ results/
 output/
 *.png
 *.pdf
+*.hwp
+*.zip
 *.npy
 *.pkl
 *.csv
@@ -28,6 +30,9 @@ output/
 !docs/figures/
 docs/figures/*
 !docs/figures/README.md
+
+# 예외: README·포스터가 싣는 확정 그림.
+!assets/*.png
 
 # 2층 방어 — bootstrap/ 의 스크립트를 제자리가 아닌 곳에서
 # 실수로 실행했을 때 생기는 산출물.

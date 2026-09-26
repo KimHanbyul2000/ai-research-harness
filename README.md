@@ -3,6 +3,8 @@
 **연구자가 주도권을 유지하는 AI 작업 골격.**
 파일 포맷별 역할 분리 · 용어 장부 · 승인 게이트 · 오답노트 네 가지로 이루어져 있다.
 
+![Twin Independent Loop — Human-in-the-Loop AI 연구 협업 체계](assets/twin-independent-loop.png)
+
 ---
 
 ## 무엇을 푸는가
