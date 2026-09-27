@@ -222,7 +222,7 @@ git clone https://github.com/KimHanbyul2000/ai-research-harness
 ├── examples/                     채워진 예시 1건
 ├── demo/                         브라우저로 여는 데모 (뷰어 · 개념도 · 설계목표)
 ├── assets/                       README가 싣는 구조도 (.svg)
-├── poster/                       발표용 포스터 (A1 세로, 브라우저에서 PDF로 인쇄)
+├── poster/                       발표용 포스터 (A1 세로 HTML · 인쇄용 PDF) · 발표 대본
 ├── .gitignore                    3단 추적의 실물
 └── lib/                          승격 통과분이 오는 곳 (비어 있음)
 ```

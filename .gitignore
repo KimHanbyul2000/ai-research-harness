@@ -31,6 +31,9 @@ output/
 docs/figures/*
 !docs/figures/README.md
 
+# 예외: 발표 포스터의 인쇄본. 원본은 poster/index.html 이고, 고치면 다시 뽑는다.
+!poster/*.pdf
+
 # 2층 방어 — bootstrap/ 의 스크립트를 제자리가 아닌 곳에서
 # 실수로 실행했을 때 생기는 산출물.
 bootstrap/*/data/
