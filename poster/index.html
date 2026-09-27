@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin Independent Loop 포스터</title>
+<!--
+  발표용 포스터. A1 세로(594 x 841 mm).
+  인쇄: 브라우저 인쇄 → 대상 'PDF로 저장' → 용지 크기는 @page 가 정한다 → 여백 없음 · 배경 그래픽 켬.
+  화면에서는 창 폭에 맞춰 축소해 보여준다. 치수는 전부 mm 로 적는다.
+  수치는 기록에 남은 것만 쓴다(오답노트 패턴 수 등). 측정하지 않은 개선율은 쓰지 않는다.
+-->
+<style>
+:root{
+  --ink:#1a1a1a; --muted:#5f5f5f; --faint:#8a8a8a; --line:#d9d9d9; --panel:#f5f5f3;
+  --loop1:#4a5566; --loop1-bg:#eef0f3;
+  --loop2:#d9735f; --loop2-bg:#fbefec;
+  --ok:#1a7f4b; --bad:#b3261e;
+  --paper:#ffffff; --desk:#d6d6d6;
+}
+@page{ size:594mm 841mm; margin:0 }
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--desk); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+.stage{padding:24px 0;display:flex;justify-content:center}
+.page{
+  width:594mm; height:841mm; flex:none; background:var(--paper);
+  padding:26mm 32mm 20mm; display:flex; flex-direction:column; gap:8mm;
+  transform-origin:top center; box-shadow:0 4px 24px rgba(0,0,0,.18);
+  overflow:hidden;
+}
+@media print{
+  body{background:var(--paper)}
+  .stage{padding:0;display:block}
+  .page{transform:none !important;box-shadow:none;margin:0 !important}
+}
+
+/* ── 머리 ── */
+.kick{font-size:9mm;font-weight:700;letter-spacing:.14em;color:var(--faint);margin:0}
+h1{font-size:34mm;line-height:1;margin:5mm 0 0;letter-spacing:-.02em;font-weight:800}
+.sub{font-size:12.5mm;line-height:1.3;margin:6mm 0 0;font-weight:600}
+.by{font-size:9mm;color:var(--muted);margin:5mm 0 0}
+
+/* ── 전제 ── */
+.premise{
+  border-left:4mm solid var(--ink); padding:4mm 0 4mm 10mm;
+  font-size:14mm; line-height:1.3; font-weight:800; margin:0;
+}
+.premise small{display:block;font-size:7.8mm;font-weight:500;color:var(--muted);margin-top:3mm;line-height:1.45}
+
+/* ── 구조도 ── */
+.fig{margin:0;border:0.6mm solid var(--line);border-radius:4mm;padding:4mm 6mm}
+.fig img{display:block;width:420mm;max-width:100%;height:auto;margin:0 auto}
+
+/* ── 네 장치 ── */
+h2{font-size:12mm;margin:0 0 6mm;font-weight:800}
+h2 span{color:var(--faint);font-weight:700;margin-right:4mm}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8mm}
+.dev{border:0.6mm solid var(--line);border-radius:4mm;padding:7mm 8mm;display:flex;flex-direction:column;gap:4mm}
+.dev .n{font-size:7.5mm;font-weight:800;color:var(--faint);letter-spacing:.1em}
+.dev h3{font-size:10.5mm;line-height:1.2;margin:0;font-weight:800}
+.dev p{font-size:7mm;line-height:1.5;margin:0;color:var(--muted)}
+.dev p b{color:var(--ink)}
+.l1{border-top:3mm solid var(--loop1)}
+.l2{border-top:3mm solid var(--loop2)}
+.l0{border-top:3mm solid var(--ink)}
+
+/* 장치 1: 포맷 사슬 */
+.chain{display:flex;align-items:center;gap:2.5mm;flex-wrap:nowrap}
+.chip{border:0.5mm solid var(--ink);border-radius:2mm;padding:2mm 3.5mm;font-size:7.5mm;font-weight:800;font-family:ui-monospace,Menlo,monospace}
+.chip.fin{background:var(--ink);color:#fff}
+.arr{font-size:7mm;color:var(--faint)}
+.chain-cap{display:flex;gap:2.5mm;font-size:5.6mm;color:var(--muted)}
+
+/* 장치 2: 장부 대조 */
+.gl{display:flex;flex-direction:column;gap:2mm;font-size:7mm}
+.gl div{display:flex;gap:4mm;align-items:baseline}
+.gl s{color:var(--bad);text-decoration-thickness:.5mm}
+.gl b{color:var(--ok)}
+.gl .arr{font-size:6mm}
+
+/* 장치 3: 게이트 */
+.gates{display:flex;align-items:center;gap:0;font-size:6mm;color:var(--muted)}
+.gates .st{padding:0 2mm;white-space:nowrap}
+.gates .g{width:9mm;height:9mm;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:5.5mm;display:flex;align-items:center;justify-content:center;flex:none}
+
+/* 장치 4: 오답노트 4칸 */
+.cards{display:grid;grid-template-columns:auto 1fr;gap:1.5mm 4mm;font-size:6.2mm;line-height:1.4}
+.cards dt{font-weight:800;white-space:nowrap}
+.cards dd{margin:0;color:var(--muted)}
+.cards .key{color:var(--bad)}
+
+/* ── 아래 띠 ── */
+.foot{display:grid;grid-template-columns:1.25fr 1fr auto;gap:10mm;align-items:stretch;margin-top:auto}
+.box{background:var(--panel);border-radius:4mm;padding:7mm 8mm}
+.box h3{font-size:9mm;margin:0 0 4mm;font-weight:800}
+.box ul{margin:0;padding-left:6mm;font-size:6.6mm;line-height:1.55;color:var(--muted)}
+.box ul b{color:var(--ink)}
+.qrbox{display:flex;flex-direction:column;align-items:center;gap:3mm;text-align:center}
+.qr{width:62mm;height:62mm;fill:var(--ink);background:#fff;padding:3mm}
+.qrbox .t{font-size:7.5mm;font-weight:800}
+.qrbox .u{font-size:5mm;color:var(--muted);line-height:1.4;word-break:break-all;max-width:70mm}
+.colophon{display:flex;justify-content:space-between;font-size:5.4mm;color:var(--faint);border-top:0.5mm solid var(--line);padding-top:4mm}
+</style>
+</head>
+<body>
+<div class="stage">
+<article class="page" id="page">
+
+  <header>
+    <p class="kick">AI 활용 우수사례 · 연구</p>
+    <h1>Twin Independent Loop</h1>
+    <p class="sub">연구 포맷 가드레일 — 연구자가 주도권을 유지하는 AI 협업 체계</p>
+    <p class="by">김한별</p>
+  </header>
+
+  <p class="premise">
+    코드는 틀리면 멈추지만, 분석은 틀려도 숫자가 나온다.
+    <small>AI로 분석이 빨라질수록 <b>조용히 틀린 채로 계속 가는</b> 위험이 커진다.
+      AI가 다음 단계까지 가버리고, 용어를 지어내고, 그림이 테스트를 통과한 채로 틀린다.
+      그래서 판단은 사람이 쥐고, 그 판단이 <b>기록 · 재현 · 검증</b>되도록 AI가 강제하게 만들었다.</small>
+  </p>
+
+  <figure class="fig">
+    <img src="../assets/twin-independent-loop.svg" alt="Twin Independent Loop 구조도: 문서 에이전트와 코드 에이전트가 서로 다른 디렉토리에서 돌고, 가운데 연구자가 방향을 정하고 승인한다">
+  </figure>
+
+  <section>
+    <h2>두 루프가 따르는 네 가지 장치</h2>
+    <div class="grid">
+
+      <div class="dev l2">
+        <div class="n">01 · 포맷별 역할</div>
+        <h3>파일 포맷을 결과가 아니라 지시로 쓴다</h3>
+        <div class="chain">
+          <span class="chip">.md</span><span class="arr">→</span>
+          <span class="chip">.svg</span><span class="arr">→</span>
+          <span class="chip">.html</span><span class="arr">→</span>
+          <span class="chip fin">.png</span>
+        </div>
+        <p>설명 · 구조 · 탐색 · 확정. "<b>.html로 내</b>"라는 한마디가 "아직 결론이 아니다"까지
+          전달한다. 거꾸로 가지 않는다 — 그림부터 만들면 해석이 그림에 맞춰 붙는다.</p>
+      </div>
+
+      <div class="dev l1">
+        <div class="n">02 · 용어 장부</div>
+        <h3>용어는 장부와 대조한 뒤 확정한다</h3>
+        <div class="gl">
+          <div><s>강도</s> <s>증폭률</s> <s>게인</s> <span class="arr">→</span> <b>조건 배율</b></div>
+          <div><s>분석 창</s> <s>타임 윈도우</s> <span class="arr">→</span> <b>판정 구간</b></div>
+        </div>
+        <p>AI 문서에서 가장 자주 틀리는 것은 숫자가 아니라 <b>용어</b>이고, 용어 오류는
+          검산이 안 된다. 장부에 없는 말은 <b>AI가 정하지 않고 사람 앞에 올린다.</b></p>
+      </div>
+
+      <div class="dev l0">
+        <div class="n">03 · 승인 게이트</div>
+        <h3>사람이 승인해야 다음 단계로 간다</h3>
+        <div class="gates">
+          <span class="st">설계</span><span class="g">1</span><span class="st">실행</span><span class="g">2</span>
+          <span class="st">시각화</span><span class="g">3</span><span class="st">확정</span><span class="g">4</span><span class="st">추적</span>
+        </div>
+        <p><b>설계목표 문서가 없으면 코드를 만들지 않는다.</b> 한 번 시켰는데 세 단계가 돌면
+          갈렸어야 할 판단이 AI 기본값으로 지나간다. 게이트는 되돌리기 비싼 곳에만 넷 —
+          늘리면 전부 승인하게 되고, 게이트가 죽는다.</p>
+      </div>
+
+      <div class="dev l2">
+        <div class="n">04 · 오답노트</div>
+        <h3>오류 하나당 규칙 한 줄</h3>
+        <dl class="cards">
+          <dt>무슨 일이</dt><dd>"사건 없음" 음영 위에 사건 점이 찍혀 있었다</dd>
+          <dt class="key">왜 안 걸렸나</dt><dd>음영과 데이터가 <b>각각은</b> 맞았다</dd>
+          <dt>규칙</dt><dd>배경 기준값은 그리는 데이터에서 뽑는다</dd>
+          <dt>검출</dt><dd>음영 ∩ 사건 = ∅ 를 자동 단언</dd>
+        </dl>
+        <p>시각화 오류 <b>10종을 날짜와 함께</b> 쌓았다. 핵심 칸은 "왜 안 걸렸나" —
+          그 칸이 다음 검사를 설계하는 자리다.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="foot">
+    <div class="box">
+      <h3>무엇이 바뀌었나</h3>
+      <ul>
+        <li>결과를 보고 <b>여러 번 다시 지시</b>하던 흐름에서, AI가 규칙대로
+          <b>점검 · 수정한 뒤 내놓는</b> 흐름으로</li>
+        <li>연구별로 맥락을 나눠 <b>이전 연구의 자료가 섞이지 않는다</b></li>
+        <li>연구자는 세부 감독 대신 <b>결과의 타당성과 의미</b>를 검토한다</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>어디로든 옮겨진다</h3>
+      <ul>
+        <li>표준 파일 포맷과 <b>.md 규칙서</b>뿐 — 새 도구 · DB 없음</li>
+        <li>시작은 두 가지: <b>설계목표 먼저</b>, <b>장부 대조</b></li>
+        <li>도메인 내용을 뺀 골격을 <b>공개 저장소</b>로 배포</li>
+      </ul>
+    </div>
+    <div class="qrbox">
+      <svg class="qr" viewBox="0 0 33 33" shape-rendering="crispEdges" role="img" aria-label="데모 QR"><path d="M0,0h1v1h-1zM1,0h1v1h-1zM2,0h1v1h-1zM3,0h1v1h-1zM4,0h1v1h-1zM5,0h1v1h-1zM6,0h1v1h-1zM12,0h1v1h-1zM13,0h1v1h-1zM17,0h1v1h-1zM19,0h1v1h-1zM23,0h1v1h-1zM26,0h1v1h-1zM27,0h1v1h-1zM28,0h1v1h-1zM29,0h1v1h-1zM30,0h1v1h-1zM31,0h1v1h-1zM32,0h1v1h-1zM0,1h1v1h-1zM6,1h1v1h-1zM9,1h1v1h-1zM10,1h1v1h-1zM13,1h1v1h-1zM14,1h1v1h-1zM15,1h1v1h-1zM17,1h1v1h-1zM21,1h1v1h-1zM22,1h1v1h-1zM26,1h1v1h-1zM32,1h1v1h-1zM0,2h1v1h-1zM2,2h1v1h-1zM3,2h1v1h-1zM4,2h1v1h-1zM6,2h1v1h-1zM8,2h1v1h-1zM10,2h1v1h-1zM12,2h1v1h-1zM13,2h1v1h-1zM21,2h1v1h-1zM22,2h1v1h-1zM24,2h1v1h-1zM26,2h1v1h-1zM28,2h1v1h-1zM29,2h1v1h-1zM30,2h1v1h-1zM32,2h1v1h-1zM0,3h1v1h-1zM2,3h1v1h-1zM3,3h1v1h-1zM4,3h1v1h-1zM6,3h1v1h-1zM8,3h1v1h-1zM10,3h1v1h-1zM11,3h1v1h-1zM12,3h1v1h-1zM14,3h1v1h-1zM15,3h1v1h-1zM16,3h1v1h-1zM17,3h1v1h-1zM22,3h1v1h-1zM24,3h1v1h-1zM26,3h1v1h-1zM28,3h1v1h-1zM29,3h1v1h-1zM30,3h1v1h-1zM32,3h1v1h-1zM0,4h1v1h-1zM2,4h1v1h-1zM3,4h1v1h-1zM4,4h1v1h-1zM6,4h1v1h-1zM8,4h1v1h-1zM9,4h1v1h-1zM10,4h1v1h-1zM13,4h1v1h-1zM15,4h1v1h-1zM18,4h1v1h-1zM19,4h1v1h-1zM23,4h1v1h-1zM24,4h1v1h-1zM26,4h1v1h-1zM28,4h1v1h-1zM29,4h1v1h-1zM30,4h1v1h-1zM32,4h1v1h-1zM0,5h1v1h-1zM6,5h1v1h-1zM8,5h1v1h-1zM10,5h1v1h-1zM12,5h1v1h-1zM13,5h1v1h-1zM14,5h1v1h-1zM15,5h1v1h-1zM16,5h1v1h-1zM18,5h1v1h-1zM20,5h1v1h-1zM22,5h1v1h-1zM24,5h1v1h-1zM26,5h1v1h-1zM32,5h1v1h-1zM0,6h1v1h-1zM1,6h1v1h-1zM2,6h1v1h-1zM3,6h1v1h-1zM4,6h1v1h-1zM5,6h1v1h-1zM6,6h1v1h-1zM8,6h1v1h-1zM10,6h1v1h-1zM12,6h1v1h-1zM14,6h1v1h-1zM16,6h1v1h-1zM18,6h1v1h-1zM20,6h1v1h-1zM22,6h1v1h-1zM24,6h1v1h-1zM26,6h1v1h-1zM27,6h1v1h-1zM28,6h1v1h-1zM29,6h1v1h-1zM30,6h1v1h-1zM31,6h1v1h-1zM32,6h1v1h-1zM8,7h1v1h-1zM9,7h1v1h-1zM10,7h1v1h-1zM11,7h1v1h-1zM15,7h1v1h-1zM18,7h1v1h-1zM19,7h1v1h-1zM21,7h1v1h-1zM24,7h1v1h-1zM0,8h1v1h-1zM2,8h1v1h-1zM3,8h1v1h-1zM4,8h1v1h-1zM5,8h1v1h-1zM6,8h1v1h-1zM9,8h1v1h-1zM11,8h1v1h-1zM13,8h1v1h-1zM14,8h1v1h-1zM15,8h1v1h-1zM17,8h1v1h-1zM18,8h1v1h-1zM20,8h1v1h-1zM22,8h1v1h-1zM23,8h1v1h-1zM24,8h1v1h-1zM26,8h1v1h-1zM27,8h1v1h-1zM28,8h1v1h-1zM29,8h1v1h-1zM30,8h1v1h-1zM1,9h1v1h-1zM2,9h1v1h-1zM3,9h1v1h-1zM7,9h1v1h-1zM10,9h1v1h-1zM16,9h1v1h-1zM18,9h1v1h-1zM19,9h1v1h-1zM23,9h1v1h-1zM26,9h1v1h-1zM27,9h1v1h-1zM29,9h1v1h-1zM30,9h1v1h-1zM32,9h1v1h-1zM0,10h1v1h-1zM2,10h1v1h-1zM4,10h1v1h-1zM5,10h1v1h-1zM6,10h1v1h-1zM8,10h1v1h-1zM9,10h1v1h-1zM11,10h1v1h-1zM15,10h1v1h-1zM16,10h1v1h-1zM21,10h1v1h-1zM24,10h1v1h-1zM28,10h1v1h-1zM30,10h1v1h-1zM31,10h1v1h-1zM0,11h1v1h-1zM1,11h1v1h-1zM4,11h1v1h-1zM5,11h1v1h-1zM7,11h1v1h-1zM9,11h1v1h-1zM10,11h1v1h-1zM12,11h1v1h-1zM14,11h1v1h-1zM15,11h1v1h-1zM16,11h1v1h-1zM18,11h1v1h-1zM21,11h1v1h-1zM24,11h1v1h-1zM25,11h1v1h-1zM26,11h1v1h-1zM28,11h1v1h-1zM29,11h1v1h-1zM30,11h1v1h-1zM31,11h1v1h-1zM32,11h1v1h-1zM2,12h1v1h-1zM3,12h1v1h-1zM6,12h1v1h-1zM7,12h1v1h-1zM8,12h1v1h-1zM9,12h1v1h-1zM12,12h1v1h-1zM15,12h1v1h-1zM17,12h1v1h-1zM20,12h1v1h-1zM22,12h1v1h-1zM23,12h1v1h-1zM24,12h1v1h-1zM25,12h1v1h-1zM28,12h1v1h-1zM29,12h1v1h-1zM31,12h1v1h-1zM32,12h1v1h-1zM0,13h1v1h-1zM4,13h1v1h-1zM5,13h1v1h-1zM7,13h1v1h-1zM8,13h1v1h-1zM9,13h1v1h-1zM10,13h1v1h-1zM13,13h1v1h-1zM14,13h1v1h-1zM15,13h1v1h-1zM16,13h1v1h-1zM17,13h1v1h-1zM18,13h1v1h-1zM19,13h1v1h-1zM20,13h1v1h-1zM21,13h1v1h-1zM23,13h1v1h-1zM26,13h1v1h-1zM30,13h1v1h-1zM31,13h1v1h-1zM32,13h1v1h-1zM0,14h1v1h-1zM1,14h1v1h-1zM4,14h1v1h-1zM5,14h1v1h-1zM6,14h1v1h-1zM7,14h1v1h-1zM9,14h1v1h-1zM13,14h1v1h-1zM17,14h1v1h-1zM20,14h1v1h-1zM25,14h1v1h-1zM26,14h1v1h-1zM29,14h1v1h-1zM30,14h1v1h-1zM31,14h1v1h-1zM0,15h1v1h-1zM1,15h1v1h-1zM2,15h1v1h-1zM3,15h1v1h-1zM4,15h1v1h-1zM11,15h1v1h-1zM13,15h1v1h-1zM16,15h1v1h-1zM18,15h1v1h-1zM19,15h1v1h-1zM21,15h1v1h-1zM23,15h1v1h-1zM24,15h1v1h-1zM25,15h1v1h-1zM26,15h1v1h-1zM29,15h1v1h-1zM30,15h1v1h-1zM6,16h1v1h-1zM7,16h1v1h-1zM10,16h1v1h-1zM12,16h1v1h-1zM14,16h1v1h-1zM16,16h1v1h-1zM17,16h1v1h-1zM20,16h1v1h-1zM22,16h1v1h-1zM24,16h1v1h-1zM25,16h1v1h-1zM27,16h1v1h-1zM28,16h1v1h-1zM32,16h1v1h-1zM0,17h1v1h-1zM1,17h1v1h-1zM2,17h1v1h-1zM3,17h1v1h-1zM8,17h1v1h-1zM11,17h1v1h-1zM16,17h1v1h-1zM18,17h1v1h-1zM19,17h1v1h-1zM21,17h1v1h-1zM22,17h1v1h-1zM23,17h1v1h-1zM26,17h1v1h-1zM27,17h1v1h-1zM29,17h1v1h-1zM30,17h1v1h-1zM32,17h1v1h-1zM1,18h1v1h-1zM2,18h1v1h-1zM3,18h1v1h-1zM6,18h1v1h-1zM8,18h1v1h-1zM14,18h1v1h-1zM15,18h1v1h-1zM21,18h1v1h-1zM25,18h1v1h-1zM27,18h1v1h-1zM28,18h1v1h-1zM30,18h1v1h-1zM0,19h1v1h-1zM3,19h1v1h-1zM4,19h1v1h-1zM5,19h1v1h-1zM7,19h1v1h-1zM8,19h1v1h-1zM9,19h1v1h-1zM10,19h1v1h-1zM11,19h1v1h-1zM15,19h1v1h-1zM19,19h1v1h-1zM21,19h1v1h-1zM22,19h1v1h-1zM25,19h1v1h-1zM27,19h1v1h-1zM28,19h1v1h-1zM29,19h1v1h-1zM30,19h1v1h-1zM31,19h1v1h-1zM32,19h1v1h-1zM1,20h1v1h-1zM2,20h1v1h-1zM3,20h1v1h-1zM6,20h1v1h-1zM10,20h1v1h-1zM11,20h1v1h-1zM14,20h1v1h-1zM17,20h1v1h-1zM20,20h1v1h-1zM22,20h1v1h-1zM23,20h1v1h-1zM24,20h1v1h-1zM25,20h1v1h-1zM27,20h1v1h-1zM28,20h1v1h-1zM29,20h1v1h-1zM31,20h1v1h-1zM32,20h1v1h-1zM0,21h1v1h-1zM1,21h1v1h-1zM2,21h1v1h-1zM4,21h1v1h-1zM5,21h1v1h-1zM7,21h1v1h-1zM8,21h1v1h-1zM12,21h1v1h-1zM13,21h1v1h-1zM15,21h1v1h-1zM18,21h1v1h-1zM19,21h1v1h-1zM20,21h1v1h-1zM22,21h1v1h-1zM23,21h1v1h-1zM26,21h1v1h-1zM32,21h1v1h-1zM0,22h1v1h-1zM5,22h1v1h-1zM6,22h1v1h-1zM7,22h1v1h-1zM8,22h1v1h-1zM10,22h1v1h-1zM11,22h1v1h-1zM12,22h1v1h-1zM13,22h1v1h-1zM14,22h1v1h-1zM15,22h1v1h-1zM16,22h1v1h-1zM17,22h1v1h-1zM20,22h1v1h-1zM21,22h1v1h-1zM24,22h1v1h-1zM26,22h1v1h-1zM27,22h1v1h-1zM28,22h1v1h-1zM29,22h1v1h-1zM30,22h1v1h-1zM31,22h1v1h-1zM0,23h1v1h-1zM3,23h1v1h-1zM5,23h1v1h-1zM7,23h1v1h-1zM9,23h1v1h-1zM11,23h1v1h-1zM13,23h1v1h-1zM14,23h1v1h-1zM16,23h1v1h-1zM20,23h1v1h-1zM21,23h1v1h-1zM22,23h1v1h-1zM23,23h1v1h-1zM24,23h1v1h-1zM25,23h1v1h-1zM26,23h1v1h-1zM27,23h1v1h-1zM30,23h1v1h-1zM32,23h1v1h-1zM0,24h1v1h-1zM4,24h1v1h-1zM5,24h1v1h-1zM6,24h1v1h-1zM7,24h1v1h-1zM9,24h1v1h-1zM13,24h1v1h-1zM17,24h1v1h-1zM20,24h1v1h-1zM22,24h1v1h-1zM24,24h1v1h-1zM25,24h1v1h-1zM26,24h1v1h-1zM27,24h1v1h-1zM28,24h1v1h-1zM32,24h1v1h-1zM8,25h1v1h-1zM10,25h1v1h-1zM16,25h1v1h-1zM17,25h1v1h-1zM18,25h1v1h-1zM19,25h1v1h-1zM21,25h1v1h-1zM22,25h1v1h-1zM24,25h1v1h-1zM28,25h1v1h-1zM30,25h1v1h-1zM32,25h1v1h-1zM0,26h1v1h-1zM1,26h1v1h-1zM2,26h1v1h-1zM3,26h1v1h-1zM4,26h1v1h-1zM5,26h1v1h-1zM6,26h1v1h-1zM9,26h1v1h-1zM10,26h1v1h-1zM11,26h1v1h-1zM13,26h1v1h-1zM14,26h1v1h-1zM15,26h1v1h-1zM23,26h1v1h-1zM24,26h1v1h-1zM26,26h1v1h-1zM28,26h1v1h-1zM30,26h1v1h-1zM31,26h1v1h-1zM0,27h1v1h-1zM6,27h1v1h-1zM8,27h1v1h-1zM10,27h1v1h-1zM11,27h1v1h-1zM13,27h1v1h-1zM14,27h1v1h-1zM15,27h1v1h-1zM16,27h1v1h-1zM20,27h1v1h-1zM21,27h1v1h-1zM23,27h1v1h-1zM24,27h1v1h-1zM28,27h1v1h-1zM29,27h1v1h-1zM30,27h1v1h-1zM31,27h1v1h-1zM0,28h1v1h-1zM2,28h1v1h-1zM3,28h1v1h-1zM4,28h1v1h-1zM6,28h1v1h-1zM8,28h1v1h-1zM9,28h1v1h-1zM10,28h1v1h-1zM11,28h1v1h-1zM15,28h1v1h-1zM17,28h1v1h-1zM19,28h1v1h-1zM22,28h1v1h-1zM24,28h1v1h-1zM25,28h1v1h-1zM26,28h1v1h-1zM27,28h1v1h-1zM28,28h1v1h-1zM29,28h1v1h-1zM32,28h1v1h-1zM0,29h1v1h-1zM2,29h1v1h-1zM3,29h1v1h-1zM4,29h1v1h-1zM6,29h1v1h-1zM8,29h1v1h-1zM9,29h1v1h-1zM13,29h1v1h-1zM17,29h1v1h-1zM18,29h1v1h-1zM19,29h1v1h-1zM20,29h1v1h-1zM21,29h1v1h-1zM23,29h1v1h-1zM24,29h1v1h-1zM25,29h1v1h-1zM28,29h1v1h-1zM29,29h1v1h-1zM31,29h1v1h-1zM32,29h1v1h-1zM0,30h1v1h-1zM2,30h1v1h-1zM3,30h1v1h-1zM4,30h1v1h-1zM6,30h1v1h-1zM8,30h1v1h-1zM9,30h1v1h-1zM10,30h1v1h-1zM14,30h1v1h-1zM15,30h1v1h-1zM16,30h1v1h-1zM18,30h1v1h-1zM21,30h1v1h-1zM22,30h1v1h-1zM26,30h1v1h-1zM27,30h1v1h-1zM29,30h1v1h-1zM30,30h1v1h-1zM0,31h1v1h-1zM6,31h1v1h-1zM9,31h1v1h-1zM14,31h1v1h-1zM16,31h1v1h-1zM19,31h1v1h-1zM20,31h1v1h-1zM21,31h1v1h-1zM22,31h1v1h-1zM23,31h1v1h-1zM28,31h1v1h-1zM29,31h1v1h-1zM30,31h1v1h-1zM0,32h1v1h-1zM1,32h1v1h-1zM2,32h1v1h-1zM3,32h1v1h-1zM4,32h1v1h-1zM5,32h1v1h-1zM6,32h1v1h-1zM8,32h1v1h-1zM9,32h1v1h-1zM11,32h1v1h-1zM12,32h1v1h-1zM14,32h1v1h-1zM16,32h1v1h-1zM17,32h1v1h-1zM19,32h1v1h-1zM22,32h1v1h-1zM23,32h1v1h-1zM24,32h1v1h-1zM25,32h1v1h-1zM27,32h1v1h-1zM29,32h1v1h-1zM31,32h1v1h-1z"/></svg>
+      <div class="t">데모를 직접 조작해 보기</div>
+      <div class="u">kimhanbyul2000.github.io/<br>ai-research-harness/demo/</div>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <span>github.com/KimHanbyul2000/ai-research-harness · MIT</span>
+    <span>포스터와 데모의 예시 값 · 용어는 전부 가상이다</span>
+  </div>
+
+</article>
+</div>
+<script>
+// 화면에서만 창 폭에 맞춰 축소한다. 인쇄에서는 @media print 가 transform 을 끈다.
+(function(){
+  var page = document.getElementById('page');
+  function fit(){
+    page.style.transform = '';
+    var w = page.offsetWidth, h = page.offsetHeight;
+    var s = Math.min(1, (window.innerWidth - 32) / w);
+    page.style.transform = 'scale(' + s + ')';
+    page.style.marginBottom = (h * s - h) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('beforeprint', function(){ page.style.transform=''; page.style.marginBottom=''; });
+  window.addEventListener('afterprint', fit);
+  fit();
+})();
+</script>
+</body>
+</html>

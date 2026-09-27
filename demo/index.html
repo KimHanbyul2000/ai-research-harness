@@ -119,6 +119,65 @@ canvas{display:block;width:100%;border:1px solid var(--line);border-radius:3px;b
 footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--muted)}
 footer a{color:var(--muted)}
+/* 탭 0 — 구조 */
+.fig0{border:1px solid var(--line);border-radius:6px;padding:12px;margin:0 0 22px;background:#fff}
+.fig0 img{display:block;width:100%;height:auto}
+.devtbl{width:100%;border-collapse:collapse;font-size:14px}
+.devtbl th,.devtbl td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.devtbl th{color:var(--muted);font-weight:600;font-size:13px}
+.devtbl td:first-child{font-weight:700;white-space:nowrap}
+.go{appearance:none;border:1px solid var(--ink);background:#fff;border-radius:4px;padding:3px 10px;
+  font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
+.go:hover{background:var(--ink);color:#fff}
+kbd{font:12px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-bottom-width:2px;
+  border-radius:3px;padding:0 5px;background:#fff}
+
+/* 탭 3 — 용어 장부 */
+textarea.src{width:100%;min-height:150px;font:inherit;font-size:15px;line-height:1.75;padding:12px;
+  border:1px solid var(--line);border-radius:4px;resize:vertical}
+.row{display:flex;gap:8px;align-items:center;margin:10px 0 0;flex-wrap:wrap}
+.anno{font-size:15px;line-height:2.1;padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:#fff;margin-top:14px}
+.anno mark{background:none;padding:0 1px;border-radius:2px}
+.anno .avoid{color:var(--bad);text-decoration:line-through;text-decoration-thickness:1.5px}
+.anno .std{color:var(--ok);font-weight:700;border-bottom:2px solid var(--ok)}
+.anno .amb{background:#fde7e4;color:var(--bad);font-weight:700;outline:1.5px solid var(--bad)}
+.anno .und{background:#fff4d6;color:#7a5a00;font-weight:700;outline:1.5px dashed #b88a00}
+.anno sup{font-size:11.5px;font-weight:700;margin-left:2px;white-space:nowrap}
+.anno .avoid+sup{color:var(--ok)}
+.anno .amb+sup{color:var(--bad)}
+.anno .und+sup{color:#7a5a00}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted);margin-top:8px}
+
+/* 탭 4 — 승인 게이트 */
+.pipe{display:flex;align-items:center;gap:0;margin:6px 0 18px;overflow-x:auto;padding-bottom:4px}
+.stg{flex:1 1 0;min-width:88px;text-align:center;padding:12px 6px;border:1.5px solid var(--line);
+  border-radius:6px;font-weight:700;font-size:14px;color:var(--muted);background:#fff;transition:all .2s}
+.stg small{display:block;font-weight:400;font-size:11.5px;margin-top:2px}
+.stg.done{border-color:var(--ink);color:var(--ink);background:var(--panel)}
+.stg.rush{border-color:var(--bad);color:var(--bad);background:#fdf1ef}
+.gt{flex:none;width:30px;height:30px;border-radius:50%;margin:0 6px;display:flex;align-items:center;
+  justify-content:center;font-size:13px;font-weight:800;border:2px dashed var(--line);color:var(--line);transition:all .2s}
+.gt.on{border:2px solid var(--ink);background:var(--ink);color:#fff}
+.gt.wait{border:2px solid var(--bad);background:#fff;color:var(--bad);box-shadow:0 0 0 5px rgba(179,38,30,.15)}
+.gt.pass{border:2px solid var(--ok);background:var(--ok);color:#fff}
+.ask{border:2px solid var(--bad);border-radius:6px;padding:12px 14px;margin-bottom:14px;background:#fff}
+.ask h4{margin:0 0 6px;font-size:14.5px}
+.ask p{margin:0 0 10px;font-size:13.5px;color:var(--muted)}
+.ask .row{margin:0}
+.ask .btn.pri{background:var(--ink);color:#fff;border-color:var(--ink)}
+.log{list-style:none;margin:0;padding:0;font-size:13.5px;border:1px solid var(--line);border-radius:4px;
+  min-height:120px;max-height:300px;overflow:auto;background:#fff}
+.log li{padding:6px 12px;border-bottom:1px solid #f0f0f0;display:flex;gap:10px}
+.log li:last-child{border-bottom:0}
+.log .who{flex:none;width:44px;font-weight:700;color:var(--muted)}
+.log .warn{color:var(--bad)}
+.log .ok{color:var(--ok)}
+.log .empty{color:var(--muted);justify-content:center}
+.ev{list-style:none;margin:0;padding:0;font-size:13.5px}
+.checks .ev li{display:block;padding:3px 0}
+.ev code{font-size:12.5px}
+.big{font-size:28px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+
 @media(max-width:700px){.card-body{flex-direction:column}}
 </style>
 </head>
@@ -126,9 +185,9 @@ footer a{color:var(--muted)}
 <div class="wrap">
 
 <header>
-  <h1>데모 뷰어</h1>
-  <p><code>ai-research-harness</code> — <code>.html</code>이 검증 단계의 도구라는 것과,
-     시각화 오류가 검사를 통과한 채로 틀린다는 것을 조작으로 확인하는 페이지.</p>
+  <h1>데모 뷰어 — Twin Independent Loop</h1>
+  <p><code>ai-research-harness</code>의 네 장치를 글이 아니라 <b>조작으로</b> 확인하는 페이지.
+     숫자키 <kbd>0</kbd>~<kbd>4</kbd>로 탭을 옮긴다.</p>
   <div class="warn">
     값·조건명·단위는 <b>전부 가상</b>이다. 고정 시드로 페이지 안에서 생성하며 외부 통신이
     없다. 설계 의도는 <code>demo/00_설계목표.md</code>에 있다.
@@ -136,12 +195,42 @@ footer a{color:var(--muted)}
 </header>
 
 <div class="tabs" role="tablist">
-  <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">① 오답노트 실연</button>
+  <button class="tab" role="tab" id="tab-0" aria-controls="panel-0" aria-selected="true">구조</button>
+  <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="false">① 오답노트 실연</button>
   <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false">② 데이터 탐색</button>
+  <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false">③ 용어 장부 대조</button>
+  <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false">④ 승인 게이트</button>
 </div>
 
+<!-- ══════════════════ 탭 0 ══════════════════ -->
+<section class="panel" id="panel-0" role="tabpanel" aria-labelledby="tab-0">
+  <h2>두 루프, 네 장치 — 판단은 가운데에 남는다</h2>
+  <p class="lead">
+    문서 에이전트와 코드 에이전트는 서로 다른 디렉토리에서 돌고, <b>파일로만</b> 오간다.
+    두 루프가 공통으로 따르는 규칙이 아래 네 장치이고, 각각을 뒤의 탭에서 직접 조작해 본다.
+  </p>
+  <figure class="fig0">
+    <img src="../assets/twin-independent-loop.svg"
+         alt="Twin Independent Loop 구조도: 문서 에이전트와 코드 에이전트가 서로 다른 디렉토리에서 돌고, 00_설계목표.md와 01_결과해석.md로 오가며, 가운데의 연구자가 승인 게이트 네 곳에서 판단한다">
+  </figure>
+  <div class="card">
+    <h3>네 장치와 시연</h3>
+    <div style="padding:4px 16px 12px">
+      <table class="devtbl">
+        <thead><tr><th>장치</th><th>무엇을 막나</th><th>여기서 보는 것</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>오답노트</td><td>테스트를 통과한 채로 틀린 그림</td><td>틀린 판에서도 값·단위 검사는 ✓. 실패는 대조 검사에서만</td><td><button class="go" data-go="1">① 보기</button></td></tr>
+          <tr><td>포맷별 역할</td><td>결론인지 탐색인지 모호한 산출물</td><td><code>.png</code>로는 답할 수 없는 네 가지 조작</td><td><button class="go" data-go="2">② 보기</button></td></tr>
+          <tr><td>용어 장부</td><td>AI가 지어낸 말 · 두 뜻으로 쓰인 말</td><td>AI가 쓴 문단을 장부와 대조. 직접 고쳐 볼 수 있다</td><td><button class="go" data-go="3">③ 보기</button></td></tr>
+          <tr><td>승인 게이트</td><td>AI 기본값이 판단을 대신하는 것</td><td>같은 요청을 게이트 없이 / 있게 돌려 본다</td><td><button class="go" data-go="4">④ 보기</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════ 탭 1 ══════════════════ -->
-<section class="panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+<section class="panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" hidden>
   <h2>시각화 오류는 검사를 통과한 채로 틀린다</h2>
   <p class="lead">
     각 패턴에서 <b>틀린 판 / 고친 판</b>을 바꿔가며 본다. 그림보다 오른쪽
@@ -278,8 +367,86 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+<!-- ══════════════════ 탭 3 ══════════════════ -->
+<section class="panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
+  <h2>AI 문서에서 가장 자주 틀리는 것은 숫자가 아니라 용어다</h2>
+  <p class="lead">
+    아래는 AI가 쓴 것처럼 만든 <b>가상 문단</b>이다. 문장은 매끄럽고 숫자도 틀리지 않았다.
+    <b>장부와 대조</b>하면 무엇이 올라오는지 본다. 문단은 직접 고칠 수 있다.
+  </p>
+  <div class="card">
+    <h3>AI가 쓴 결과해석 문단 <small>(가상)</small></h3>
+    <div class="card-body">
+      <div class="figcol">
+        <textarea class="src" id="gl-src" spellcheck="false"></textarea>
+        <div class="row">
+          <button class="btn" id="gl-run" style="background:var(--ink);color:#fff;border-color:var(--ink)">장부와 대조</button>
+          <button class="btn" id="gl-reset">예시로 되돌리기</button>
+        </div>
+        <div class="anno" id="gl-out"></div>
+        <div class="legend">
+          <span><span style="color:var(--bad);text-decoration:line-through">취소선</span> 쓰지 않는 표현 → 표준 용어</span>
+          <span><span style="background:#fde7e4;color:var(--bad);font-weight:700;padding:0 3px">빨강</span> 뜻이 갈리는 말 — 멈춘다</span>
+          <span><span style="background:#fff4d6;color:#7a5a00;font-weight:700;padding:0 3px">노랑</span> 미정 용어 — 사람에게</span>
+          <span><span style="color:var(--ok);font-weight:700;border-bottom:2px solid var(--ok)">초록</span> 표준 용어</span>
+        </div>
+      </div>
+      <div class="sidecol">
+        <div class="checks" id="k-gl"></div>
+        <p class="note">
+          <b>AI가 표준 용어를 스스로 정하지 않는다.</b> 바꿀 말이 장부에 있으면 바꾸고,
+          없거나 뜻이 갈리면 사람 앞에 올린다.<br><br>
+          <b>못 잡는 것:</b> 장부에 아예 없는 새 말. AI는 자기가 만든 말인지 모른다 — 그래서
+          이 대조는 통제 장치가 아니라 <b>통과 지점</b>이다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 탭 4 ══════════════════ -->
+<section class="panel" id="panel-4" role="tabpanel" aria-labelledby="tab-4" hidden>
+  <h2>한 번 시켰는데 네 단계가 돌면, 판단이 기본값으로 지나간다</h2>
+  <p class="lead">
+    같은 요청 — <b>"분석해 줘"</b> 한 마디 — 를 게이트 없이, 그리고 게이트를 두고 돌려 본다.
+    끝났을 때 <b>파일에 무엇이 남았는지</b>를 비교한다.
+  </p>
+  <div class="card">
+    <h3>설계 → 실행 → 시각화 → 확정 → 추적 <small>(흐름의 모형)</small></h3>
+    <div class="card-body">
+      <div class="figcol">
+        <div class="row" style="margin:0 0 12px">
+          <div class="seg" data-seg="gate" style="margin:0">
+            <button data-v="off" aria-pressed="true">게이트 없음</button>
+            <button data-v="on" aria-pressed="false">게이트 있음</button>
+          </div>
+          <button class="btn" id="g-run" style="background:var(--ink);color:#fff;border-color:var(--ink)">"분석해 줘"</button>
+          <button class="btn" id="g-reset">처음으로</button>
+        </div>
+        <div class="pipe" id="g-pipe"></div>
+        <div id="g-ask"></div>
+        <ul class="log" id="g-log"></ul>
+      </div>
+      <div class="sidecol">
+        <div class="checks">
+          <h4>사람이 내린 판단</h4>
+          <div class="big" id="g-n">0</div>
+          <h4 style="margin-top:14px">파일에 남은 근거</h4>
+          <ul class="ev" id="g-ev"></ul>
+        </div>
+        <p class="note">
+          <b>"왜 이 값인가"</b>에 파일로 답할 수 있는지가 차이다. 게이트 없는 쪽은 결과가 더
+          빨리 나오지만, 판정 구간이 왜 그 값인지는 <b>대화에만</b> 있다.<br><br>
+          <b>게이트를 늘리지 않는다.</b> 전부 물으면 사람이 전부 승인하게 되고, 그러면 게이트가
+          죽는다. 되돌리기 비싼 곳에만 넷.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  자기완결 단일 파일 · 외부 라이브러리 없음 · 외부 통신 없음 ·
+  구조도(<code>assets/</code>) 외에는 자기완결 단일 파일 · 외부 라이브러리 없음 · 외부 통신 없음 ·
   <a href="https://github.com/KimHanbyul2000/ai-research-harness">ai-research-harness</a>
 </footer>
 </div>
@@ -713,6 +880,201 @@ function bindEx(){
   cv.addEventListener('mouseleave', ()=>{ tip.style.display='none'; });
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   탭 3 — 용어 장부 대조
+   아래 목록은 GLOSSARY.md 의 사본이다(자기완결이 우선). 장부를 고치면 여기도 고친다.
+   ═══════════════════════════════════════════════════════════════ */
+const GLOSSARY = {
+  standard: [   // 1절 표준 용어 — 표준 용어 : 쓰지 않는 표현
+    {term:'조건 배율',   avoid:['강도','가중치','증폭률','게인']},
+    {term:'적용 시점',   avoid:['시작점','개시 시간','타이밍']},
+    {term:'판정 구간',   avoid:['분석 창','측정 윈도우','타임 윈도우']},
+    {term:'전수 재적용', avoid:['재분석','재계산','업데이트']},
+  ],
+  undecided: ['경계 근처 대상'],                 // 1절 표준 용어가 아직 없는 것
+  scale: {word:'배율', kinds:['조건','설정','적용','관측','전달']},  // 2절 혼동 주의
+};
+const GL_SAMPLE =
+  '조건 1에서는 입력 강도를 1.5배로 올렸다. 분석 창을 [18, 62] ms로 잡고 재분석한 결과, ' +
+  '경계 근처 대상 3개가 판정에서 탈락했다. 배율 1.5에서는 평균 발화율이 기준 조건보다 ' +
+  '높았고, 자극의 타이밍은 기준 조건과 같았다.';
+
+function esc(t){ return t.replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function glossaryScan(text){
+  const hits = [];   // {a, b, kind, note}
+  const add = (a, b, kind, note) => {
+    if(hits.some(h => a < h.b && b > h.a)) return;   // 먼저 잡힌 긴 말이 이긴다
+    hits.push({a, b, kind, note});
+  };
+  const all = (word, fn) => { let i = text.indexOf(word);
+    while(i >= 0){ fn(i, i+word.length); i = text.indexOf(word, i+word.length); } };
+
+  // 긴 말부터: 미정 → 표준 → 쓰지 않는 표현 → 종류 없는 '배율'
+  GLOSSARY.undecided.forEach(w => all(w, (a,b)=>add(a,b,'und','미정 — 사람에게')));
+  GLOSSARY.standard.forEach(s => all(s.term, (a,b)=>add(a,b,'std','')));
+  GLOSSARY.standard.forEach(s => s.avoid.forEach(w => all(w, (a,b)=>add(a,b,'avoid','→ '+s.term))));
+  const {word, kinds} = GLOSSARY.scale;
+  all(word, (a,b)=>{
+    const before = text.slice(Math.max(0,a-3), a).replace(/\s+$/,'');
+    if(kinds.some(k => before.endsWith(k))) return;
+    add(a, b, 'amb', '어느 배율? ' + kinds.slice(1).join('·'));
+  });
+  return hits.sort((x,y)=>x.a-y.a);
+}
+
+function runGlossary(){
+  const text = document.getElementById('gl-src').value;
+  const hits = glossaryScan(text);
+  let html = '', at = 0;
+  hits.forEach(h=>{
+    html += esc(text.slice(at, h.a)) + `<mark class="${h.kind}">${esc(text.slice(h.a,h.b))}</mark>` +
+            (h.note ? `<sup>${esc(h.note)}</sup>` : '');
+    at = h.b;
+  });
+  html += esc(text.slice(at));
+  document.getElementById('gl-out').innerHTML = html || '<span style="color:var(--muted)">(빈 문단)</span>';
+
+  const n = k => hits.filter(h=>h.kind===k).length;
+  const el = document.getElementById('k-gl');
+  const rows = [
+    {ok:true,           t:'문법 · 숫자 — 이상 없음 (이 층에서는 아무것도 안 걸린다)'},
+    {ok:n('avoid')===0, t:'쓰지 않는 표현 ' + n('avoid') + '건' + (n('avoid')?' → 장부의 표준 용어로 바꾼다':'')},
+    {ok:n('amb')===0,   t:'종류 없이 쓴 "배율" ' + n('amb') + '건' + (n('amb')?' → <b>멈춘다.</b> 설정·적용·관측·전달 중 무엇인가':'')},
+    {ok:n('und')===0,   t:'미정 용어 ' + n('und') + '건' + (n('und')?' → AI가 채우지 않고 사람에게 올린다':'')},
+  ];
+  el.innerHTML = '<h4>대조 결과</h4><ul>' + rows.map(r =>
+    `<li class="${r.ok?'pass':'fail'}"><span class="mark">${r.ok?'✓':'✗'}</span><span>${r.t}</span></li>`
+  ).join('') + '</ul>' +
+  `<div class="verdict ${rows.every(r=>r.ok)?'ok':'bad'}">${
+     rows.every(r=>r.ok) ? '장부와 일치 — 표준 용어 ' + n('std') + '건. 이 문단은 확정할 수 있다.'
+       : '문장은 매끄럽다. 걸린 것은 전부 <b>장부 대조</b>에서만 나왔다.'}</div>`;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   탭 4 — 승인 게이트 (흐름의 모형)
+   ═══════════════════════════════════════════════════════════════ */
+const STAGES = [
+  {id:'design', name:'설계',   sub:'00_설계목표.md'},
+  {id:'run',    name:'실행',   sub:'run.py'},
+  {id:'viz',    name:'시각화', sub:'.html'},
+  {id:'final',  name:'확정',   sub:'.png'},
+  {id:'track',  name:'추적',   sub:'lib/'},
+];
+const G = {mode:'off', step:0, gates:[], done:[], rush:false, n:0, ev:[], log:[], ask:null, busy:false, timer:null};
+
+function gReset(){
+  clearTimeout(G.timer);
+  Object.assign(G, {step:0, gates:['','','',''], done:[false,false,false,false,false], rush:false,
+                    n:0, ev:[], log:[], ask:null, busy:false});
+  gDraw();
+}
+function gLog(who, t, cls){ G.log.push({who, t, cls:cls||''}); }
+function gDraw(){
+  const pipe = document.getElementById('g-pipe');
+  pipe.innerHTML = STAGES.map((s,i)=>{
+    const cls = G.done[i] ? (G.rush ? 'stg rush' : 'stg done') : 'stg';
+    const gate = i < 4 ? `<div class="gt ${G.mode==='on' ? (G.gates[i]||'on') : ''}">${i+1}</div>` : '';
+    return `<div class="${cls}">${s.name}<small>${s.sub}</small></div>` + gate;
+  }).join('');
+  const log = document.getElementById('g-log');
+  log.innerHTML = G.log.length ? G.log.map(l =>
+    `<li class="${l.cls}"><span class="who">${l.who}</span><span>${l.t}</span></li>`).join('')
+    : '<li class="empty">"분석해 줘"를 누른다</li>';
+  log.scrollTop = log.scrollHeight;
+  document.getElementById('g-n').textContent = G.n;
+  document.getElementById('g-ev').innerHTML = G.ev.length ? G.ev.map(e=>`<li>✓ ${e}</li>`).join('')
+    : `<li style="color:${G.done[4] ? 'var(--bad)' : 'var(--muted)'}">${G.done[4]
+        ? '✗ 없음 — "왜 이 값인가"는 대화에만 있다' : '(아직 없음)'}</li>`;
+  const ask = document.getElementById('g-ask');
+  if(!G.ask){ ask.innerHTML=''; return; }
+  ask.innerHTML = `<div class="ask"><h4>게이트 ${G.ask.gate} — ${G.ask.title}</h4><p>${G.ask.body}</p>
+    <div class="row">${G.ask.opts.map((o,i)=>
+      `<button class="btn ${i===0?'pri':''}" data-opt="${i}" ${o.disabled?'disabled style="opacity:.45;cursor:not-allowed"':''}>${o.label}</button>`
+    ).join('')}</div></div>`;
+  ask.querySelectorAll('[data-opt]').forEach(b=>b.addEventListener('click', ()=>{
+    const o = G.ask.opts[+b.dataset.opt]; if(o.disabled) return;
+    G.ask = null; G.n++; o.pick(); gDraw();
+  }));
+}
+
+// 게이트 없음: 한 번의 요청으로 다섯 단계가 끝까지 돈다
+function gRush(){
+  G.busy = true; G.rush = true;
+  const seq = [
+    ['AI', '요청을 받았다. 설계목표 문서 없이 바로 진행한다', 'warn'],
+    ['AI', '판정 구간 — <b>AI 기본값 [0, 50] ms</b>로 run.py 실행', 'warn'],
+    ['AI', '그림 4장을 그렸다', ''],
+    ['AI', 'figures/*.png 저장 — <b>확정으로 보고</b>', 'warn'],
+    ['AI', '새 함수 3개를 lib/에 추가했다', 'warn'],
+  ];
+  let i = 0;
+  (function tick(){
+    if(i >= seq.length){ gLog('—', '끝. 걸린 시간은 짧다. 그런데 <b>왜 [0, 50] ms인가</b>에 답하는 파일이 없다.', 'warn');
+      G.busy=false; gDraw(); return; }
+    G.done[i] = true; gLog(...seq[i]); i++; gDraw();
+    G.timer = setTimeout(tick, 380);
+  })();
+}
+
+// 게이트 있음: 게이트마다 멈추고 사람에게 묻는다
+function gStepwise(){
+  G.busy = true;
+  G.done[0] = true;
+  gLog('AI', '설계목표 초안을 00_설계목표.md에 썼다. 판정 구간이 정해지지 않았다');
+  G.gates[0] = 'wait';
+  G.ask = {gate:1, title:'설계 → 실행', body:'00_설계목표.md가 확정되기 전에는 run.py를 만들지 않는다. 판정 구간을 무엇으로 할까?',
+    opts:[
+      {label:'[18, 62] ms — 자극 구간에 맞춤', pick:()=>gAfter1('[18, 62] ms', '자극 구간에 맞춤')},
+      {label:'[0, 50] ms — AI 기본값', pick:()=>gAfter1('[0, 50] ms', 'AI 제안을 연구자가 채택')},
+    ]};
+  gDraw();
+}
+function gAfter1(win, why){
+  G.gates[0] = 'pass';
+  gLog('사람', '판정 구간 = ' + win + ' (' + why + ')', 'ok');
+  G.ev.push('<code>00_설계목표.md</code> — 판정 구간 ' + win + ', 근거: ' + why);
+  G.gates[1] = 'wait';
+  G.ask = {gate:2, title:'실행 → 시각화', body:'무거운 실행이다. <code>--check-only</code> 점검 결과: 입력 조건 4/4 · 출력 폴더 비어 있음 · 예상 산출물 그림 4장. 실행할까?',
+    opts:[
+      {label:'점검 확인 — 실행 승인', pick:()=>{
+        G.gates[1]='pass'; G.done[1]=true;
+        gLog('사람', '점검 보고를 보고 실행을 승인했다', 'ok');
+        G.ev.push('점검 보고 — 입력 4/4, 출력 폴더 비어 있음');
+        gLog('AI', 'run.py 실행 완료. 그림 4장을 .html 탐색 뷰어로 냈다 — 아직 결론 아님');
+        G.done[2]=true; gAsk3();
+      }},
+      {label:'중단', pick:()=>{ G.gates[1]='wait'; gLog('사람', '실행을 멈췄다. 설계로 돌아간다', 'warn'); G.busy=false; }},
+    ]};
+}
+function gAsk3(){
+  G.gates[2] = 'wait';
+  G.ask = {gate:3, title:'시각화 → 확정', body:'사람이 그림을 직접 보고 승인하기 전에는 .png로 확정하지 않는다. 오답노트 대조: 음영 ∩ 사건 = ∅ ✓, 범주 색 = 상수 ✓.',
+    opts:[
+      {label:'그림을 보고 승인', pick:()=>{
+        G.gates[2]='pass'; G.done[3]=true;
+        gLog('사람', '그림을 보고 승인했다 → figures/*.png 확정', 'ok');
+        G.ev.push('승인 기록 — 그림 4장, 오답노트 대조 통과');
+        gAsk4();
+      }},
+      {label:'다시 그리기', pick:()=>{ gLog('사람', '겹친 판을 나눈 판으로 다시 그리라고 했다 (오답노트 패턴 7)', ''); gLog('AI', '다시 그렸다'); gAsk3(); }},
+    ]};
+}
+function gAsk4(){
+  G.gates[3] = 'wait';
+  G.ask = {gate:4, title:'확정 → 추적', body:'이번에 쓴 계산 함수를 lib/로 올릴까? 승격 관문: 의존성 없음 ✓ · <b>두 번째 사용자 ✗</b>',
+    opts:[
+      {label:'올리지 않는다 — bootstrap/에 사본만', pick:()=>{
+        G.gates[3]='pass'; G.done[4]=true;
+        gLog('사람', '승격하지 않는다. 드라이버 사본만 남긴다', 'ok');
+        G.ev.push('<code>bootstrap/</code> 사본 — lib/는 늘지 않았다');
+        gLog('—', '끝. 느리지만 "왜 이 값인가"에 <b>파일로</b> 답할 수 있다.', 'ok');
+        G.busy=false;
+      }},
+      {label:'lib/로 승격 (관문 미통과)', disabled:true, pick:()=>{}},
+    ]};
+}
+
 /* ═══════════════════ 배선 ═══════════════════ */
 document.querySelectorAll('.seg').forEach(seg=>{
   seg.addEventListener('click', e=>{
@@ -722,19 +1084,42 @@ document.querySelectorAll('.seg').forEach(seg=>{
     if(seg.dataset.seg==='p1'){ P1.mode=v; drawP1(); }
     if(seg.dataset.seg==='p5'){ P5.mode=v; drawP5(); }
     if(seg.dataset.seg==='p7'){ P7.mode=v; drawP7(); }
+    if(seg.dataset.seg==='gate'){ G.mode=v; gReset(); }
   });
 });
 
-document.querySelectorAll('.tab').forEach(tab=>{
-  tab.addEventListener('click', ()=>{
-    document.querySelectorAll('.tab').forEach(t=>{
-      const on = t===tab;
-      t.setAttribute('aria-selected', String(on));
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    });
-    redrawAll();
+function selectTab(id){
+  const tab = document.getElementById(id); if(!tab) return;
+  document.querySelectorAll('.tab').forEach(t=>{
+    const on = t===tab;
+    t.setAttribute('aria-selected', String(on));
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
   });
+  try{ history.replaceState(null, '', '#' + id); }catch(e){}
+  redrawAll();
+}
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>selectTab(tab.id));
 });
+document.querySelectorAll('[data-go]').forEach(b=>{
+  b.addEventListener('click', ()=>{ selectTab('tab-' + b.dataset.go); window.scrollTo(0,0); });
+});
+// 발표용: 숫자키 0~4 로 탭 이동. 글을 입력하는 중에는 끈다.
+window.addEventListener('keydown', e=>{
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  if(/^(TEXTAREA|INPUT)$/.test(document.activeElement.tagName)) return;
+  if(/^[0-4]$/.test(e.key)) selectTab('tab-' + e.key);
+});
+
+document.getElementById('gl-src').value = GL_SAMPLE;
+document.getElementById('gl-run').addEventListener('click', runGlossary);
+document.getElementById('gl-reset').addEventListener('click', ()=>{
+  document.getElementById('gl-src').value = GL_SAMPLE; runGlossary(); });
+document.getElementById('g-run').addEventListener('click', ()=>{
+  if(G.busy) return;
+  gReset(); G.mode === 'on' ? gStepwise() : gRush();
+});
+document.getElementById('g-reset').addEventListener('click', gReset);
 
 function redrawAll(){
   if(!document.getElementById('panel-1').hidden){ drawP1(); drawP5(); drawP7(); }
@@ -743,7 +1128,9 @@ function redrawAll(){
 
 buildControls();
 bindEx();
-redrawAll();
+runGlossary();
+gReset();
+if(/^#tab-[0-4]$/.test(location.hash)) selectTab(location.hash.slice(1)); else redrawAll();
 let rt; window.addEventListener('resize', ()=>{ clearTimeout(rt); rt=setTimeout(redrawAll,120); });
 </script>
 </body>
