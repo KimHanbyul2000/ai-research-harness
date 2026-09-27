@@ -73,6 +73,11 @@ python3 -c "import xml.dom.minidom;xml.dom.minidom.parse('demo/개념도_포맷�
 
 시연 URL: `https://kimhanbyul2000.github.io/ai-research-harness/demo/`
 
+### 발표 일정
+
+**추후 공지.** 개최안(2026-09-15) 안에서 날짜가 서로 다르다 — 개요는 10.28(수), 향후 계획은
+10.29(목). 서류 공모 마감은 10.2(금), 발표는 10분 + 질의응답 5분. 공지가 나오면 이 절을 고친다.
+
 ### 커밋
 
 `main`에 직접 커밋한다. 푸시는 **공개 행위**이므로 사람의 확인을 받는다.
